@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>TileProj</id>
+    <title>TileProj</title>
+    <version>$version$</version>
+    <authors>Joel Brown</authors>
+    <licenseUrl>https://github.com/jbrwn/TileProj/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/jbrwn/TileProj</projectUrl>
+    <description>A projection API for map tiles</description>
+    <tags>TileProj Map Tiles Projection</tags>
+  </metadata>
+  <files>
+    <file src="TileProj\bin\Release\TileProj.dll" target="lib\net45" />
+  </files>
+</package>
