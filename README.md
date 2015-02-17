@@ -8,6 +8,8 @@ A .NET projection API for map tiles
 ## Getting Started
 TileProj comes out of the box with a [Spherical Mercator](http://wiki.openstreetmap.org/wiki/Mercator#Spherical_Mercator) projection.
 
+Check out the [tests](https://github.com/jbrwn/TileProj/blob/master/TileProj.Test/SphericalMercatorTests.cs) for example usage
+
 ##API
 Projections implment the IProjection interface:
 public interface IProjection
