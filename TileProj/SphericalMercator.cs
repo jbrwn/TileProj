@@ -5,6 +5,7 @@ namespace TileProj
     public class SphericalMercator : IProjection
     {
         private const double EARTH_RADIUS = 6378137.0;
+        private const double MAX_EXTENT = 20037508.342789244;
 
         public SphericalMercator() {}
 
@@ -108,12 +109,16 @@ namespace TileProj
 
         public IPoint LongLatToXY(IPoint point)
         {
-            return new Point()
-            {
-                X = (Math.PI / 180) * point.X * EARTH_RADIUS,
-                Y = EARTH_RADIUS * Math.Log(Math.Tan(Math.PI / 4.0 + point.Y * (Math.PI / 180) / 2))
+            double x = (Math.PI / 180) * point.X * EARTH_RADIUS;
+            double y = EARTH_RADIUS * Math.Log(Math.Tan(Math.PI / 4.0 + point.Y * (Math.PI / 180) / 2));
 
-            };
+            //Test for max extent
+            x = (x < -MAX_EXTENT) ? -MAX_EXTENT : x;
+            x = (x > MAX_EXTENT) ? MAX_EXTENT : x;
+            y = (y < -MAX_EXTENT) ? -MAX_EXTENT : y;
+            y = (y > MAX_EXTENT) ? MAX_EXTENT : y;
+
+            return new Point(x, y);
         }
 
         public IPoint XYtoLongLat(IPoint point)

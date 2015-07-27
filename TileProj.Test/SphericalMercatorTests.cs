@@ -93,6 +93,17 @@ namespace TileProj.Test
         }
 
         [TestMethod]
+        public void SphericalMercator_LongLatToXY_MaxExtent()
+        {
+            SphericalMercator sm = new SphericalMercator();
+            Point ll = new Point(-180, -90);
+            Point merc = new Point(-20037508.342789244, -20037508.342789244);
+            IPoint actual = sm.LongLatToXY(ll);
+            Assert.AreEqual(merc.X, actual.X);
+            Assert.AreEqual(merc.Y, actual.Y);
+        }
+
+        [TestMethod]
         public void SphericalMercator_XYToLongLat()
         {
             SphericalMercator sm = new SphericalMercator();
