@@ -98,11 +98,18 @@ namespace TileProj
             double x = point.X;
             double y = point.Y * -1;
 
+            double coordX = Math.Floor((x + shift) / res);
+            double coordY = Math.Floor((y + shift) / res);
+
+            //watch for max extent 
+            coordX = (coordX == n) ? n - 1.0 : coordX;
+            coordY = (coordY == n) ? n - 1.0 : coordY;
+
             return new Coord()
             {
                 Z = z,
-                X = (int)Math.Floor((x + shift) / res),
-                Y = (int)Math.Floor((y + shift) / res),
+                X = (int)coordX,
+                Y = (int)coordY,
                 TMS = false
             };
         }

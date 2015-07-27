@@ -82,6 +82,21 @@ namespace TileProj.Test
         }
 
         [TestMethod]
+        public void SphericalMercator_PointToCoord_MaxExtent()
+        {
+            SphericalMercator sm = new SphericalMercator();
+            Point p1 = new Point(-20037508.342789244, -20037508.342789244);
+            Point p2 = new Point(20037508.342789244, 20037508.342789244);
+            Coord e1 = new Coord(0, 0, 0);
+            Assert.AreEqual(e1, sm.PointToCoord(p1, 0));
+            Assert.AreEqual(e1, sm.PointToCoord(p2, 0));
+            Coord e2 = new Coord(4, 0, 15);
+            Assert.AreEqual(e2, sm.PointToCoord(p1, 4));
+            Coord e3 = new Coord(4, 15, 0);
+            Assert.AreEqual(e3, sm.PointToCoord(p2, 4));
+        }
+
+        [TestMethod]
         public void SphericalMercator_LongLatToXY()
         {
             SphericalMercator sm = new SphericalMercator();
