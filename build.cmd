@@ -22,7 +22,7 @@ IF EXIST packages\Sake goto korebuild
 .nuget\NuGet.exe install Sake -ExcludeVersion -Source https://www.nuget.org/api/v2/ -o packages
 
 :korebuild
-IF EXIST packages\Sake goto dnx
+IF EXIST packages\KoreBuild goto dnx
 .nuget\nuget.exe install KoreBuild -ExcludeVersion -Source https://www.myget.org/F/aspnetvnext/api/v2 -o packages -nocache -pre
 
 
